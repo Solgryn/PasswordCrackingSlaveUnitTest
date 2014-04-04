@@ -12,7 +12,7 @@ namespace PasswordCrackingSlaveUnitTest
         {
             try
             {
-                new UserInfoText(null, null);
+                new UserInfoClearText(null, null);
                 Assert.Fail();
             }
             catch (ArgumentNullException)
@@ -22,7 +22,7 @@ namespace PasswordCrackingSlaveUnitTest
 
             try
             {
-                new UserInfoText(null, "test");
+                new UserInfoClearText(null, "test");
                 Assert.Fail();
             }
             catch (ArgumentNullException ex)
@@ -32,7 +32,7 @@ namespace PasswordCrackingSlaveUnitTest
 
             try
             {
-                new UserInfoText("test", null);
+                new UserInfoClearText("test", null);
                 Assert.Fail();
             }
             catch (ArgumentNullException ex)
@@ -40,18 +40,17 @@ namespace PasswordCrackingSlaveUnitTest
                 Assert.AreEqual(ex.ParamName, "password");
             }
 
-            new UserInfoText("test", "test");
+            new UserInfoClearText("test", "test");
             //Does not throw exception if strings are empty, but does if value is null
-            new UserInfoText("", "");
+            new UserInfoClearText("", "");
 
         }
 
         [TestMethod]
         public void TestToString()
         {
-            var uic = new UserInfoText("Anders", "anders123");
+            var uic = new UserInfoClearText("Anders", "anders123");
             Assert.AreEqual(uic.ToString(), "Anders: anders123");
-            Assert.AreNotEqual(uic.ToString(), "Anders:anders123");
         }
     }
 }
